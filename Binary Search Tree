@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct TreeNode 
+{
+  int data;
+  struct Node *right;
+  struct Node *left;
+}*root=NULL;
+
+void insert(int key)
+{
+	struct Node *t = root; //pointer pointing to the root
+	struct Node* r, * p; //r will be following p, p is used for creating new node
+
+	if (root == NULL) //if only root exists, a node will be created in the following lines
+	{
+		p = (struct Node*)malloc(sizeof(struct Node));
+		p -> data = key;
+		p->left = p->right = NULL; //both point to null
+		return p;
+	}
+
+	while (t != NULL) 
+	{
+		r = t;
+		if (t->data > key)
+		{
+			t = t->right;
+		}
+
+		else if (t->data < key)
+		{
+			t = t->left;
+		}
+
+		else 
+		{
+			return;
+		}
+	}
+
+	p = (struct Node*)malloc(sizeof(struct Node));  //after we found the last element, a node is created with value of the key and NULL childs
+	p->data = key;
+	p->left = p->right = NULL;
+
+	if (key < r->data) //determine whether the value of key should be on left or right side of the newly created node
+	{
+		r->left = p;
+
+	}
+
+	else //determine whether the value of key should be on left or right side of the newly created node
+	{
+		r->right = p;
+	}
+
+}
+
+struct Node* search(int key) //function for searching a value in the tree
+{
+	struct Node *t = root;
+
+	while (t != NULL)
+	{
+		if (t->data == key)
+		{
+			return t;
+		}
+
+		else if (t->data > key)
+		{
+			t = t->left;
+		}
+
+		else
+		{
+			t = t->right;
+		}
+	}
+	return NULL;
+}
+
+
+
+
+int main() {
+  
+
+
+  return 0;
+}
