@@ -1,0 +1,40 @@
+#include <stdlib.h>
+#include <stdio.h>
+
+struct node {
+  int val;
+  struct node* next;
+}*first=NULL,*second=NULL,*third=NULL;
+
+void merge(struct Node *A, struct node* B)  //A pointing to the first list and B to the second list
+{
+	struct node* last;  //temporary pointer for help
+	third = A;  //third and last pointing to p (first list)
+	last = A;
+
+	while (A && B)  //do while p and q val aren't 0
+	{
+		last->next = B;
+		last = B;
+		A = A->next;
+		last->next = NULL;
+
+		last->next = A;
+		last = A;
+		B = B->next;
+		last->next = NULL;
+	}
+
+	if (A)last->next = A;
+	if (B) last->next = B;
+
+	A = third; //third pointer was at the head so now A and B can point to the head as mentioned in the question
+	B = third;
+
+}
+
+void main() {
+  
+}
+
+
