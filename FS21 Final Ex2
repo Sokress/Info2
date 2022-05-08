@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct elem {
+	int key;
+	int status; //0: Occupied -1:EMPTY
+};
+
+int m = 10;
+struct elem HT[10];
+
+void Initialize()
+{
+	for (int i = 0; i < m; i++)
+	{
+		HT[i].key = -1;
+		HT[i].status = -1;
+	}
+}
+
+int hash(int k, int i)
+{
+	return(k % m + i) % m;
+}
+
+
+int HTInsert(int k)
+{
+	int i = 0;
+	int probe = hash(k, i);
+	while (i < m && HT[probe].status == 0)
+	{
+		i++;
+		probe = hash(k, i);
+	}
+
+	HT[probe].key == k;
+	HT[probe].status == 0;
+	return probe;
+
+}
+
+
+void HTDelete(int k)
+{
+	int i = 0;
+	int probe = hash(k, i);
+	int actualHashIdx = probe;
+	while (i < m && HT[probe].key != k)
+	{
+		i++;
+		int probe = hash(k, i);
+	}
+
+	if (i >= m || HT[probe].status == -1)
+	{
+		return -1;
+	}
+
+	HT[probe].key == -1;
+	HT[probe].status == -1;
+
+	int j = (probe + 1) % m;
+	while (j != actualHashIdx && HT[j].status != -1) {
+		if (hash(HT[j].key, 0) != j) {
+			int tmpKey = HT[j].key;
+			HT[j].key = -1;
+			HT[j].status = -1;
+			HTInsert(tmpKey);
+		}
+		j = (j + 1) % m;
+	}
+}
+
+
+int main() {
+
+	
+	return 0;
+}
