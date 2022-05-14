@@ -4,7 +4,7 @@
 struct node {
   int val;
   struct node* next;
-}*first=NULL,*second=NULL,*third=NULL;
+}*third=NULL;
 
 void merge(struct Node *A, struct node* B)  //A pointing to the first list and B to the second list
 {
