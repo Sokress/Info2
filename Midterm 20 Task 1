@@ -1,0 +1,24 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+sum(int A[], int B[], int n)
+{
+    int sum = 0;
+    int i;
+    
+    for(i = 0; i < n; i++)
+    {
+        sum += ((A[i]*10^(n-i)) + (B[i]*10^(n-i)));
+    }
+    
+    return sum;
+}
+
+
+
+int main() {
+    // Write C code here
+    printf("Hello world");
+    
+    return 0;
+}
