@@ -1,92 +1,91 @@
+// Online C compiler to run C program online
 #include <stdio.h>
-#include <stdlib.h>
 
-struct TreeNode 
+struct TreeNode{
+    int val;
+    struct TreeNode* left;
+    struct TreeNode* right;
+};
+
+struct TreeNode* insert(struct TreeNode* root, int val)
 {
-  int data;
-  struct Node *right;
-  struct Node *left;
-}*root=NULL;
-
-void insert(int key)
-{
-	struct Node *t = root; //pointer pointing to the root
-	struct Node* r, * p; //r will be following p, p is used for creating new node
-
-	if (root == NULL) //if only root exists, a node will be created in the following lines
-	{
-		p = (struct Node*)malloc(sizeof(struct Node));
-		p -> data = key;
-		p->left = p->right = NULL; //both point to null
-		return p;
-	}
-
-	while (t != NULL) 
-	{
-		r = t;
-		if (t->data > key)
-		{
-			t = t->right;
-		}
-
-		else if (t->data < key)
-		{
-			t = t->left;
-		}
-
-		else 
-		{
-			return;
-		}
-	}
-
-	p = (struct Node*)malloc(sizeof(struct Node));  //after we found the last element, a node is created with value of the key and NULL childs
-	p->data = key;
-	p->left = p->right = NULL;
-
-	if (key < r->data) //determine whether the value of key should be on left or right side of the newly created node
-	{
-		r->left = p;
-
-	}
-
-	else //determine whether the value of key should be on left or right side of the newly created node
-	{
-		r->right = p;
-	}
-
+    struct TreeNode *newTreeNode = NULL;
+    struct TreeNode *current = root;
+    struct TreeNode *, *p;
+    
+    if (root == NULL)
+    {
+        newTreeNode = (struct Node*)malloc(sizeof(struct TreeNode));
+        newTreeNode -> val = val;
+        newTreeNode -> left = NULL;
+        newTreeNode -> right = NULL;
+        return newTreeNode;
+    }
+    
+    while(current != NULL)
+    {
+        r = current;
+        if (current->val > val)
+        {
+            current = current -> right;
+        }
+        
+        else if (current -> < val)
+        {
+            current = current -> left;
+        }
+        
+        else
+        {
+            return;
+        }
+    }
+    
+    p = (struct Node*)malloc(sizeof(struct Node));
+    p->data = key;
+    p->left = NULL;
+    p->right = NULL;
+    
+    if(val < r->data)  //checking whether new node comes left or right to the last ndoe
+    {
+        r->left = p;
+    }
+    
+    else
+    {
+        r->right = p;
+    }
 }
 
-struct Node* search(int key) //function for searching a value in the tree
+struct TreeNode* search(struct TreeNode *root, val)
 {
-	struct Node *t = root;
-
-	while (t != NULL)
-	{
-		if (t->data == key)
-		{
-			return t;
-		}
-
-		else if (t->data > key)
-		{
-			t = t->left;
-		}
-
-		else
-		{
-			t = t->right;
-		}
-	}
-	return NULL;
+    struct TreeNode *p = root;
+    
+    while(p != NULL)
+    {
+        if (p->data == val)
+        {
+            return p;
+        }
+        
+        else if (p->data > val)
+        {
+            p = p->left;
+        }
+        
+        else
+        {
+            p = p->right;
+        }
+    }
+    return NULL;
 }
-
 
 
 
 int main() {
-  
-
-
-  return 0;
+    // Write C code here
+    printf("Hello world");
+    
+    return 0;
 }
