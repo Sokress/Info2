@@ -1,0 +1,52 @@
+#include<stdlib.h>
+#include<stdio.h>
+
+
+typedef struct stackADT {
+	int *arr;
+	int size;
+	int top;
+} stack;
+
+void initialize(stack *s, int n) {
+	s->size = n;
+	s->arr = malloc(n*sizeof(int));
+	s->top = -1;
+}
+
+void push(stack *s, int value){
+	if (s->top < (s->size-1)){
+		s->top++;
+		s->arr[s->top]=value;
+	}
+	else{
+		printf("%s\n", "Stack Overflow");
+	}
+}
+
+int peek(stack *s){
+	if(s->top >= 0 ){
+		return s->arr[s->top];
+	}
+	return -1;
+}
+
+int pop(stack *s){
+	if (s->top >= 0 ){ 
+          int x = s->arr[s->top]; 
+          s->top--; 
+          return x; 
+       } 
+       else{ 
+           printf("%s\n", "Stack Underflow");
+       } 
+       return -1;
+}
+
+int size(stack *s){
+	return s->size;
+}
+
+int capacity(stack *s){
+	return s->size-s->top-1;
+}
