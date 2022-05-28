@@ -17,8 +17,7 @@ sum(int A[], int B[], int n)
 
 
 int main() {
-    // Write C code here
-    printf("Hello world");
+ 
     
     return 0;
 }
