@@ -8,6 +8,29 @@ void swap(int* a, int* b)
 	*b = temp;
 }
 
+int isMaxHeap(int A[], int i, int n)
+{
+	if (i >((n-1)/2))
+	{
+		rerturn 1;
+	}
+	int leftcheck = 0;
+	int rightcheck = 0;
+	if (a[i]>=a[2*i])
+	{
+	    leftcheck = isMaxHeap(a, 2*i,n);
+	}
+	if ((2*i+1)<n)
+	{
+	    if(a[i]>a[2*i+1])
+	    {
+	        rightcheck = isMaxHeap(a, 2*i+1, n);
+	    }
+	   
+	}
+	return leftcheck && rightcheck;
+}
+
 
 void heapify(int A[], int i, int s)
 {
